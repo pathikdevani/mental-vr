@@ -84,5 +84,8 @@ export class Document<DocumentId, DocumentData extends Object, MetaData> {
 
     revert() {
         this.patched = undefined;
+        if(this.opration !== Opration.CREAT) {
+            this.opration = Opration.NONE;
+        }
     }
 }
