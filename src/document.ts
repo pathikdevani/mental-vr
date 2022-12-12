@@ -74,11 +74,15 @@ export class Document<DocumentId, DocumentData extends Object, MetaData> {
     }
 
     read() {
-        return this.patched;
+        return merge(this.data, this.patched) as DocumentData & MetaData;
     }
 
     delete() {
         this.patched = undefined;
         this.opration = Opration.DELETE;
+    }
+
+    revert() {
+        this.patched = undefined;
     }
 }
